@@ -17,7 +17,7 @@ public class Server {
             while (!serverSoc.isClosed()) {
                 Socket clientsoc = serverSoc.accept();
                 System.out.println("A new player has join!");
-                ClientHandler ClientHandler = new ClientHandler(clientsoc, table);
+                NetworkClient ClientHandler = new NetworkClient(clientsoc, table);
 
                 Thread thread = new Thread(ClientHandler);
                 thread.start();

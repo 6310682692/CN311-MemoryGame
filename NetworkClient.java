@@ -39,8 +39,6 @@ public class ClientHandler implements Runnable {
                 statusPlayer = input.readLine();
                 if (statusPlayer.equals("true")) {
                     broadcastWinner(this.playerUsername, this.table);
-                    System.out.println("TEST 3");
-                    System.out.println(statusPlayer);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

@@ -66,11 +66,11 @@ public class Client {
         // create done table
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                done[i][j] = true;
+                done[i][j] = false;
             }
         }
 
-        done[5][5] = false;
+        // done[5][5] = false;
 
         System.out.print("Enter your username: ");
         String username = sc.nextLine();
@@ -108,6 +108,7 @@ public class Client {
 
                 if (done[x][y]) { // Check if player already play the card
                     System.out.println("You have already play this spot");
+                    DrawTable(table, done, HEIGHT, WIDTH);
                 } else {
                     done[x][y] = true;
 
@@ -153,16 +154,27 @@ public class Client {
 
     public static void DrawTable(Character[][] table, Boolean[][] done, int HEIGHT, int WIDTH) {
         System.out.println("The current table is: ");
+        System.out.println("    1 2 3 4 5 6");
+        System.out.println("    ____________");
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if (done[i][j] == false) {
-                    System.out.print("?" + " ");
+                if (j == 0) {
+                    if (done[i][j] == false) {
+                        System.out.print((char) (i + 97) + " | " + "?" + " ");
+                    } else {
+                        System.out.print((char) (i + 97) + " | " + table[i][j] + " ");
+                    }
                 } else {
-                    System.out.print(table[i][j] + " ");
+                    if (done[i][j] == false) {
+                        System.out.print("?" + " ");
+                    } else {
+                        System.out.print(table[i][j] + " ");
+                    }
                 }
             }
             System.out.println();
         }
+
     }
 
     public static boolean ValidAns(String inpuString) {
